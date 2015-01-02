@@ -41,13 +41,16 @@ class NotifyHipchatPlugin(Plugin):
 
     def __notify(self, group, event, is_new):
         project_name = '<strong>{0}</strong>'.format(saxutils.escape(group.project.name))
+        times_seen = group.times_seen+1
+        if is_new:
+            times_seen = 1
 
         message = '[{level}] {project} {message} [<a href="{link}">View on Sentry</a>] ({count} times seen)'.format(
             level=saxutils.escape(group.get_level_display().upper()),
             project=project_name,
             message=saxutils.escape(event.error()),
             link=saxutils.escape(group.get_absolute_url()),
-            count=group.times_seen+1,
+            count=times_seen,
         )
 
         token = self.get_option('token', group.project)
