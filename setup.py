@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='sentry-notify-hipchat',
-    version='0.1.1',
+    version='0.1.2',
     description='A Sentry notification plugin for HipChat',
     author='Kohei Suzuki',
     author_email='eagletmt@gmail.com',
