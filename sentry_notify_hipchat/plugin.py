@@ -42,7 +42,7 @@ class NotifyHipchatPlugin(Plugin):
     def __notify(self, group, event, is_new):
         project_name = '<strong>{0}</strong>'.format(saxutils.escape(group.project.name))
 
-        message = '[{level}] {project} {message} [<a href="{link}">view</a>] ({count} times seen)'.format(
+        message = '[{level}] {project} {message} [<a href="{link}">View on Sentry</a>] ({count} times seen)'.format(
             level=saxutils.escape(group.get_level_display().upper()),
             project=project_name,
             message=saxutils.escape(event.error()),
