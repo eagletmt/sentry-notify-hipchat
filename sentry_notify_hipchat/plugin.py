@@ -1,6 +1,7 @@
 from django import forms
 from hipchat import HipChat
 from sentry.plugins import Plugin
+from sentry.utils.strings import strip
 import xml.sax.saxutils as saxutils
 
 import sentry_notify_hipchat
@@ -45,10 +46,14 @@ class NotifyHipchatPlugin(Plugin):
         if is_new:
             times_seen = 1
 
-        message = '[{level}] {project} {message} [<a href="{link}">View on Sentry</a>] ({count} times seen)'.format(
+        message = '''[{level}] {project} {message}<br>
+        {culprit} ({count} times seen)<br>
+        [<a href="{link}">View on Sentry</a>]
+        '''.format(
             level=saxutils.escape(group.get_level_display().upper()),
             project=project_name,
             message=saxutils.escape(event.error()),
+            culprit=saxutils.escape(strip(group.culprit)),
             link=saxutils.escape(group.get_absolute_url()),
             count=times_seen,
         )
