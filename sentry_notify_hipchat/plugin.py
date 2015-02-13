@@ -32,6 +32,8 @@ class NotifyHipchatPlugin(Plugin2):
 
 
 class HipchatNotifier(Notifier):
+    slug = 'notify-hipchat'
+
     def notify(self, notification, **kwargs):
         event = notification.event
         group = event.group
