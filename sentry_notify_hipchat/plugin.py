@@ -13,8 +13,6 @@ DEFAULT_HIPCHAT_ENDPOINT = 'https://api.hipchat.com/v1/'
 class NotifyHipchatForm(forms.Form):
     token = forms.CharField(help_text='HipChat API v1 token')
     room = forms.CharField(help_text='Room name or ID')
-    new_only = forms.BooleanField(help_text='Notify new messages only', required=False)
-    ignore_muted = forms.BooleanField(help_text="Don't notify muted events", required=False, initial=True)
     notify = forms.BooleanField(help_text='Enable "notify" flag', required=False, initial=True)
     endpoint = forms.CharField(help_text='HipChat API endpoint', required=False)
 
