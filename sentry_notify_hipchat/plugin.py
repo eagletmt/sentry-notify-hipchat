@@ -1,6 +1,6 @@
 from django import forms
 from hipchat import HipChat
-from sentry.plugins import NotificationPlugin
+from sentry.plugins.bases.notify import NotificationPlugin
 from sentry.utils.strings import strip
 import xml.sax.saxutils as saxutils
 
